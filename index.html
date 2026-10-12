@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multiclass Classification Lab</title>
+    <meta
+      name="description"
+      content="Interactive portfolio dashboard for multinomial logistic regression and neural network multiclass classification."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <p class="eyebrow">Applied ML Portfolio</p>
+            <h1>Multiclass Classification Lab</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <a class="button secondary" href="multiclass_logistic_regression_neural_network.ipynb">Notebook</a>
+          <a class="button primary" href="README.md">README</a>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="summary-panel" aria-labelledby="summary-title">
+          <div>
+            <p class="eyebrow">Validation Performance</p>
+            <h2 id="summary-title">Model comparison</h2>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </section>
+
+        <section class="workspace-grid">
+          <aside class="control-panel" aria-label="Model controls">
+            <div class="panel-section">
+              <p class="eyebrow">Model</p>
+              <div class="segmented" id="modelTabs" role="tablist" aria-label="Model selection"></div>
+            </div>
+
+            <div class="panel-section">
+              <p class="eyebrow">Inference Point</p>
+              <div class="field">
+                <label for="xInput">Feature 1</label>
+                <div class="range-row">
+                  <input id="xInput" type="range" step="0.01">
+                  <output id="xValue" for="xInput"></output>
+                </div>
+              </div>
+              <div class="field">
+                <label for="yInput">Feature 2</label>
+                <div class="range-row">
+                  <input id="yInput" type="range" step="0.01">
+                  <output id="yValue" for="yInput"></output>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <p class="eyebrow">Prediction</p>
+              <div class="prediction-card">
+                <span class="class-dot" id="predictionDot"></span>
+                <div>
+                  <p class="prediction-label" id="predictionLabel">Class 0</p>
+                  <p class="prediction-score" id="predictionScore">0.000 confidence</p>
+                </div>
+              </div>
+              <div class="probability-list" id="probabilityList"></div>
+            </div>
+          </aside>
+
+          <section class="canvas-panel" aria-labelledby="surface-title">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Decision Surface</p>
+                <h2 id="surface-title">Validation boundary explorer</h2>
+              </div>
+              <div class="legend" id="legend"></div>
+            </div>
+            <canvas id="surfaceCanvas" width="980" height="620" aria-label="Decision boundary chart"></canvas>
+          </section>
+
+          <section class="details-panel" aria-labelledby="details-title">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">Diagnostics</p>
+                <h2 id="details-title">Validation summary</h2>
+              </div>
+              <p class="model-badge" id="activeModelBadge">Logistic</p>
+            </div>
+            <div class="diagnostic-grid">
+              <div class="stat-block">
+                <span>Accuracy</span>
+                <strong id="activeAccuracy">0.696970</strong>
+              </div>
+              <div class="stat-block">
+                <span>Correct validation points</span>
+                <strong id="correctCount">46 / 66</strong>
+              </div>
+            </div>
+            <div class="confusion-wrap">
+              <p class="eyebrow">Confusion Matrix</p>
+              <div class="confusion-matrix" id="confusionMatrix"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="model-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
